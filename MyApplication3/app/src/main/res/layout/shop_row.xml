@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="product"
+            type="com.example.myapplication.models.Product" />
+        <variable
+            name="homeInterface"
+            type="com.example.myapplication.adapters.HomeListAdapter.HomeInterface" />
+    </data>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{()->homeInterface.onItemClick(product)}">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/pizza"
+            android:scaleType="fitCenter"
+            android:productImage="@{product.image}"/>
+
+        <TextView
+            android:id="@+id/nametextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{product.name}"
+            android:layout_gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="25dp"
+            />
+
+        <TextView
+            android:id="@+id/pricetextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{'₹'+String.valueOf(product.price)}"
+            android:layout_gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            />
+
+        <Button
+            android:id="@+id/addtocartbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Add"
+            android:onClick="@{()-> homeInterface.addItem(product)}"
+
+            android:background="@drawable/buttonedit" />
+    </LinearLayout>
+</layout>
